@@ -2,9 +2,6 @@ import { useEffect, useState, useRef } from "react";
 import { BsSend } from "react-icons/bs";
 // import { Configuration, OpenAIApi } from "openai";
 
-// const apiKey = "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";
-// const apiUrl = "https://api.openai.com/v1/chat/completions";
-
 export default function Input({
   inputValue,
   setInputValue,

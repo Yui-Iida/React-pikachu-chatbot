@@ -9,8 +9,6 @@ import Input from "./components/Input";
 import Response from "./components/Response";
 import MyQuestion from "./components/MyQuestion";
 
-const apiKey = "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";
-
 export default function App() {
   const [inputValue, setInputValue] = useState("");
   const [response, setResponse] = useState("");
