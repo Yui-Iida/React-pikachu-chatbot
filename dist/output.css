@@ -584,6 +584,10 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .fixed {
   position: fixed;
 }
@@ -604,8 +608,8 @@ video {
   left: 0px;
 }
 
-.left-14 {
-  left: 3.5rem;
+.left-2 {
+  left: 0.5rem;
 }
 
 .right-0 {
@@ -630,10 +634,6 @@ video {
 
 .m-6 {
   margin: 1.5rem;
-}
-
-.ml-20 {
-  margin-left: 5rem;
 }
 
 .ml-6 {
@@ -680,8 +680,16 @@ video {
   width: 1.25rem;
 }
 
+.w-full {
+  width: 100%;
+}
+
 .w-screen {
   width: 100vw;
+}
+
+.max-w-xs {
+  max-width: 20rem;
 }
 
 .flex-grow {
@@ -702,6 +710,10 @@ video {
 
 .justify-end {
   justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
 }
 
 .gap-2 {
@@ -767,6 +779,10 @@ video {
   padding-left: 1.5rem;
 }
 
+.pr-6 {
+  padding-right: 1.5rem;
+}
+
 .font-poppins {
   font-family: Poppins, sans-serif;
 }
@@ -774,6 +790,16 @@ video {
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .text-gray-600 {
@@ -786,48 +812,7 @@ video {
   outline-offset: 2px;
 }
 
-.before\:absolute::before {
-  content: var(--tw-content);
-  position: absolute;
-}
-
-.before\:-left-4::before {
-  content: var(--tw-content);
-  left: -1rem;
-}
-
-.before\:top-3::before {
-  content: var(--tw-content);
-  top: 0.75rem;
-}
-
-.before\:top-full::before {
-  content: var(--tw-content);
-  top: 100%;
-}
-
-.before\:w-4::before {
-  content: var(--tw-content);
-  width: 1rem;
-}
-
-.before\:border-4::before {
-  content: var(--tw-content);
-  border-width: 4px;
-}
-
-.before\:border-transparent::before {
-  content: var(--tw-content);
-  border-color: transparent;
-}
-
-.before\:border-r-pink-300::before {
-  content: var(--tw-content);
-  --tw-border-opacity: 1;
-  border-right-color: rgb(249 168 212 / var(--tw-border-opacity));
-}
-
-.before\:content-\[\'\'\]::before {
-  --tw-content: '';
-  content: var(--tw-content);
+:is(.dark .dark\:bg-slate-800) {
+  --tw-bg-opacity: 1;
+  background-color: rgb(30 41 59 / var(--tw-bg-opacity));
 }

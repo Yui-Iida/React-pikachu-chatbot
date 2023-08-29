@@ -24,11 +24,11 @@ export default function Input({
     }
   }, [textareaRef]);
 
-  function adjustTextareaHeight() {
+  const adjustTextareaHeight = () => {
     if (textareaRef.current && textareaRef.current.scrollHeight > 48) {
       setTextareaHeight(textareaRef.current.scrollHeight);
     }
-  }
+  };
 
   const handleInputKeyDown = (e) => {
     // if (e.key === "Enter" && e.shiftKey) console.log(textareaRef.current);

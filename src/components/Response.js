@@ -4,7 +4,7 @@ import { ThreeDots } from "react-loader-spinner";
 export default function Response({ response, isLoading }) {
   const [latestResponse, setLatestResponse] = useState("");
   const [latestResponseUpdated, setLatestResponseUpdated] = useState(false);
-  const [isHeigherThan100, setisHeigherThan100] = useState(false);
+  const [isHeigherThan120, setisHeigherThan120] = useState(false);
   const responseRef = useRef(null);
 
   useEffect(() => {
@@ -17,11 +17,11 @@ export default function Response({ response, isLoading }) {
   useEffect(() => {
     if (latestResponseUpdated && responseRef.current) {
       const clientHeight = responseRef.current.clientHeight;
-      setisHeigherThan100(clientHeight >= 100);
+      setisHeigherThan120(clientHeight >= 120);
     }
   }, [latestResponseUpdated]);
 
-  console.log(isHeigherThan100);
+  // console.log(isHeigherThan100);
 
   // useEffect(() => {
   //   if (responseRef.current) {
@@ -65,7 +65,7 @@ export default function Response({ response, isLoading }) {
             <div
               className="absolute left-2
           bg-pink-300 w-5 h-8 clip-path-polygon-left"
-              style={{ top: isHeigherThan100 ? "50px" : "10px" }}
+              style={{ top: isHeigherThan120 ? "50px" : "10px" }}
             ></div>
             {/* </> */}
           </div>

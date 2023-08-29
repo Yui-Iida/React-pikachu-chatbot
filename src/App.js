@@ -15,6 +15,7 @@ export default function App() {
   const [messageHistory, setMessageHistory] = useState([]);
   const [textareaHeight, setTextareaHeight] = useState(60);
   const [isLoading, setIsLoading] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const chatAreaRef = useRef(null);
 
@@ -87,8 +88,8 @@ export default function App() {
   console.log("MessageHistory", messageHistory);
 
   return (
-    <div className="h-screen bg-gray-100 font-poppins flex flex-col">
-      <Header />
+    <div className="h-screen bg-gray-100 font-poppins flex flex-col dark:bg-slate-800">
+      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <div
         ref={chatAreaRef}
         className="overflow-y-scroll mt-20"
