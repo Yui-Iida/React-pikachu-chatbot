@@ -40,6 +40,8 @@ export default function Input({
   };
 
   const handleSubmit = () => {
+    if (textareaRef.current.value === "") return;
+
     const currentInputValue = textareaRef.current.value;
     setInputValue(currentInputValue);
     textareaRef.current.value = "";
@@ -119,7 +121,7 @@ export default function Input({
   //   console.error("Fetch Error: ", error);
   // }
   // };
-  console.log(inputValue);
+  // console.log(inputValue);
 
   return (
     <footer className="h-auto w-screen bg-white p-10 bottom-0 left-0 right-0 fixed">

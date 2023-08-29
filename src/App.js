@@ -14,7 +14,11 @@ export default function App() {
   const [response, setResponse] = useState("");
   const [messageHistory, setMessageHistory] = useState([]);
   const [textareaHeight, setTextareaHeight] = useState(60);
+  const [isLoading, setIsLoading] = useState(false);
+
   const chatAreaRef = useRef(null);
+
+  const apiKey = "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";
 
   useEffect(() => {
     // コンポーネントが更新された際に最下部にスクロールする
@@ -38,10 +42,25 @@ export default function App() {
   });
 
   const generateResponse = async (current) => {
+    setIsLoading(true);
+
     const currentInputValue = current;
+    // setTimeout(() => {
+    //   setResponse(`You asked me ${currentInputValue}`);
+    // }, 2000);
 
     try {
       setResponse(`You asked me ${currentInputValue}`);
+      // setMessageHistory([
+      //   ...messageHistory,
+      //   { role: "user", content: inputValue },
+      //   { role: "pikachu", content: response },
+      // ]);
+      // setTimeout(() => {
+      //   setResponse(`You asked me ${currentInputValue}`);
+      //   setMessageHistory(newMessageHistory);
+      //   setIsLoading(false);
+      // }, 3000); // 適宜遅延時間を調整してください
       // 使えるけど料金が発生するので保留
       // const chatCompletion = await openai.chat.completions.create({
       //   model: "gpt-3.5-turbo",
@@ -58,9 +77,14 @@ export default function App() {
         // Non-API error
         console.log(error);
       }
+    } finally {
+      setTimeout(() => setIsLoading(false), 2000);
+      // setIsLoading(false);
     }
     console.log(response);
   };
+
+  console.log("MessageHistory", messageHistory);
 
   return (
     <div className="h-screen bg-gray-100 font-poppins flex flex-col">
@@ -75,7 +99,12 @@ export default function App() {
           message.role === "user" ? (
             <MyQuestion key={index} inputValue={message.content} />
           ) : (
-            <Response key={index} response={message.content} />
+            <Response
+              key={index}
+              response={message.content}
+              isLoading={isLoading}
+              // onChange={(index) => console.log("In Respomse", index)}
+            />
           )
         )}
         {/* {inputValue?.map((input, index) => (

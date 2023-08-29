@@ -2,7 +2,7 @@ export default function MyQuestion({ inputValue }) {
   return (
     <div className="my-question m-6">
       <div className="flex items-center relative right-0 justify-end">
-        <div className="bg-blue-400 rounded-lg mr-6 p-4">
+        <div className="bg-blue-400 rounded-lg mr-6 p-4 max-w-xs">
           <p>{inputValue}</p>
         </div>
         <img src="/img/img-ball.PNG" alt="pikachu" className="h-9" />
