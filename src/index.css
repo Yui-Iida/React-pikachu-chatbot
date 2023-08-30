@@ -1,12 +1,12 @@
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .clip-path-polygon-left {
-  clip-path: polygon(0 50%, 100% 100%, 100% 0);
+  clip-path: polygon(0 50%, 100% 75%, 100% 25%);
 }
 
 .clip-path-polygon-right {
-  clip-path: polygon(0 100%, 100% 50%, 0 0);
+  clip-path: polygon(0 75%, 100% 50%, 0 25%);
 }

@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
 import { ThreeDots } from "react-loader-spinner";
+import { MdDone } from "react-icons/md";
 
 export default function Response({ response, isLoading }) {
   const [latestResponse, setLatestResponse] = useState("");
   const [latestResponseUpdated, setLatestResponseUpdated] = useState(false);
   const [isHeigherThan120, setisHeigherThan120] = useState(false);
+  const [responsePolygon, setResponsePolygon] = useState(0);
+  const [showHoverMenu, setShowHoverMenu] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
   const responseRef = useRef(null);
 
   useEffect(() => {
@@ -18,19 +23,21 @@ export default function Response({ response, isLoading }) {
     if (latestResponseUpdated && responseRef.current) {
       const clientHeight = responseRef.current.clientHeight;
       setisHeigherThan120(clientHeight >= 120);
+      setResponsePolygon(clientHeight / 3);
     }
   }, [latestResponseUpdated]);
 
-  // console.log(isHeigherThan100);
+  const mouseEnter = () => {
+    setShowHoverMenu(true);
+  };
 
-  // useEffect(() => {
-  //   if (responseRef.current) {
-  //     setResponseHeight(responseRef.current.scrollHeight);
-  //     console.log(responseHeight);
-  //   }
-  // }, [responseRef.current]);
+  const mouseLeave = () => {
+    setShowHoverMenu(false);
+  };
 
-  // console.log(responseRef);
+  const handleCopy = () => {
+    setIsCopied(true);
+  };
 
   return (
     <div className="response m-6">
@@ -45,29 +52,36 @@ export default function Response({ response, isLoading }) {
             color="#ccc"
             ariaLabel="three-dots-loading"
             wrapperStyle={{ marginLeft: "15px" }}
-            // wrapperClassName="ml-6 p-4"
             visible={true}
           />
         ) : null}
 
         {latestResponseUpdated && (
           <div ref={responseRef} className="relative">
-            {/* (responseRef.current?.clientHeight >= 100 ? (
-              <p>Heighter than 100px</p>
-            ) : (
-              <> */}
             <div
-              className="bg-pink-300
-              rounded-lg ml-6 p-4 max-w-xs"
+              className="bg-white font-light
+              rounded-xl ml-6 p-4 max-w-xs dark:bg-neutral-950 dark:text-white md:max-w-xl"
+              onMouseEnter={mouseEnter}
+              onMouseLeave={mouseLeave}
             >
               <p>{response}</p>
+              {showHoverMenu && (
+                <div className="absolute -right-5 -bottom-2 bg-primary py-1 px-3 text-white font-extralight rounded-lg dark:bg-secondary">
+                  <CopyToClipboard text={response} onCopy={handleCopy}>
+                    <button className="flex items-center gap-1">
+                      {isCopied ? <MdDone /> : ""}Copy
+                    </button>
+                  </CopyToClipboard>
+                </div>
+              )}
             </div>
             <div
               className="absolute left-2
-          bg-pink-300 w-5 h-8 clip-path-polygon-left"
-              style={{ top: isHeigherThan120 ? "50px" : "10px" }}
+          bg-white w-5 h-8 clip-path-polygon-left dark:bg-neutral-950"
+              style={{
+                top: isHeigherThan120 ? `${responsePolygon}px` : "10px",
+              }}
             ></div>
-            {/* </> */}
           </div>
         )}
       </div>

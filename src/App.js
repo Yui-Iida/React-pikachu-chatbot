@@ -1,9 +1,7 @@
 // import { Configuration, OpenAIApi } from "openai";
-import OpenAI from "openai";
-
 import { useState, useEffect, useRef } from "react";
+import OpenAI from "openai";
 import "./App.css";
-import Contents from "./components/Contents";
 import Header from "./components/Header";
 import Input from "./components/Input";
 import Response from "./components/Response";
@@ -16,6 +14,7 @@ export default function App() {
   const [textareaHeight, setTextareaHeight] = useState(60);
   const [isLoading, setIsLoading] = useState(false);
   const [isDarkMode, setIsDarkMode] = useState(false);
+  // const [isLoadingResponse, setIsLoadingResponse] = useState(false);
 
   const chatAreaRef = useRef(null);
 
@@ -35,7 +34,7 @@ export default function App() {
         { role: "user", content: inputValue },
         { role: "pikachu", content: response },
       ]);
-  }, [response, inputValue]);
+  }, [inputValue, response]);
 
   const openai = new OpenAI({
     apiKey,
@@ -43,59 +42,50 @@ export default function App() {
   });
 
   const generateResponse = async (current) => {
+    if (isLoading) {
+      return;
+    }
     setIsLoading(true);
 
-    const currentInputValue = current;
-    // setTimeout(() => {
-    //   setResponse(`You asked me ${currentInputValue}`);
-    // }, 2000);
-
     try {
-      setResponse(`You asked me ${currentInputValue}`);
-      // setMessageHistory([
-      //   ...messageHistory,
-      //   { role: "user", content: inputValue },
-      //   { role: "pikachu", content: response },
-      // ]);
-      // setTimeout(() => {
-      //   setResponse(`You asked me ${currentInputValue}`);
-      //   setMessageHistory(newMessageHistory);
-      //   setIsLoading(false);
-      // }, 3000); // 適宜遅延時間を調整してください
+      const currentInputValue = current;
+      // setResponse(`You asked me ${currentInputValue}`);
+
       // 使えるけど料金が発生するので保留
-      // const chatCompletion = await openai.chat.completions.create({
-      //   model: "gpt-3.5-turbo",
-      //   messages: [{ role: "user", content: currentInputValue }],
-      // });
-      // setResponse(chatCompletion.choices[0].message.content);
-      // console.log(chatCompletion.choices[0].message.content);
-      // Frontend check
-      // await new Promise((resolve) => setTimeout(resolve, 1000));
+      const chatCompletion = await openai.chat.completions.create({
+        model: "gpt-3.5-turbo",
+        messages: [
+          {
+            role: "system",
+            content:
+              "You are Pikachu from Pokemon.Please answer cute and smart like pikachu. The end of the sentences please always add ' , pika!' If the user write in Japanese, please say 'ピカ！' in the end",
+          },
+          { role: "user", content: currentInputValue },
+        ],
+      });
+
+      setResponse(chatCompletion.choices[0].message.content);
     } catch (error) {
       if (error instanceof OpenAI.APIError) {
         console.error(error);
       } else {
-        // Non-API error
         console.log(error);
       }
     } finally {
-      setTimeout(() => setIsLoading(false), 2000);
-      // setIsLoading(false);
+      // setTimeout(() => setIsLoading(false), 2000);
+      setIsLoading(false);
     }
     console.log(response);
   };
 
-  console.log("MessageHistory", messageHistory);
-
   return (
-    <div className="h-screen bg-gray-100 font-poppins flex flex-col dark:bg-slate-800">
+    <div className="h-screen bg-gray-100 font-poppins flex flex-col dark:bg-neutral-700">
       <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
       <div
         ref={chatAreaRef}
         className="overflow-y-scroll mt-20"
-        style={{ marginBottom: `${textareaHeight + 100}px` }}
+        style={{ marginBottom: `${textareaHeight + 110}px` }}
       >
-        {/* <Contents /> */}
         {messageHistory?.map((message, index) =>
           message.role === "user" ? (
             <MyQuestion key={index} inputValue={message.content} />
@@ -104,14 +94,9 @@ export default function App() {
               key={index}
               response={message.content}
               isLoading={isLoading}
-              // onChange={(index) => console.log("In Respomse", index)}
             />
           )
         )}
-        {/* {inputValue?.map((input, index) => (
-        <MyQuestion input={input} key={index} />
-      ))}
-      {response ? <Response response={response} /> : ""} */}
       </div>
 
       <Input

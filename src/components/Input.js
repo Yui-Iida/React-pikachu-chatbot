@@ -124,17 +124,17 @@ export default function Input({
   // console.log(inputValue);
 
   return (
-    <footer className="h-auto w-screen bg-white p-10 bottom-0 left-0 right-0 fixed">
+    <footer className="h-auto w-screen bg-white p-10 bottom-0 left-0 right-0 fixed dark:bg-black">
       <div
         id="input-area"
-        className="bg-gray-200 h-20 p-4 rounded-xl flex items-center relative"
+        className="bg-gray-200 h-20 p-4 rounded-[35px] flex items-center relative dark:bg-neutral-500"
         style={{ height: `${textareaHeight + 32}px` }}
       >
         <textarea
           ref={textareaRef}
           id="textarea"
           placeholder="Ask Pikachu ..."
-          className="bg-gray-200 flex-grow outline-none resize-none h-auto p-4"
+          className="bg-transparent flex-grow outline-none resize-none h-auto p-4 dark:text-gray-300 dark:placeholder-gray-300"
           onChange={adjustTextareaHeight}
           onKeyDown={handleInputKeyDown}
           style={{ height: `${textareaHeight}px` }}
@@ -143,7 +143,7 @@ export default function Input({
           // value={inputValue}
         />
         <button className="px-4 py-2" onClick={handleSubmit}>
-          <BsSend className="text-gray-600" />
+          <BsSend className="text-gray-400 dark:text-gray-300" />
         </button>
       </div>
     </footer>
