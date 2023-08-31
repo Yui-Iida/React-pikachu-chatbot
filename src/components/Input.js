@@ -41,7 +41,7 @@ export default function Input({
   };
 
   return (
-    <footer className="h-auto w-screen bg-white p-10 bottom-0 left-0 right-0 fixed dark:bg-black">
+    <footer className="h-auto w-screen bg-white p-10 bottom-0 left-0 right-0 fixed flex-none z-10 dark:bg-black">
       <div
         id="input-area"
         className="bg-gray-200 h-20 p-4 rounded-[35px] flex items-center relative dark:bg-neutral-500"
