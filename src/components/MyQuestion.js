@@ -22,7 +22,7 @@ export default function MyQuestion({ inputValue }) {
         <div className="bg-primary text-white font-extralight rounded-xl mr-6 p-4 max-w-xs dark:bg-secondary md:max-w-xl">
           <p>{inputValue}</p>
         </div>
-        <img src="/img/img-ball.PNG" alt="pikachu" className="h-9" />
+        <img src="/img/img-ball.png" alt="ball" className="h-9" />
         <div
           className="absolute right-12 top-2 
           bg-primary w-5 h-8 clip-path-polygon-right dark:bg-secondary"
