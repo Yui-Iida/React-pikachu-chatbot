@@ -80,7 +80,7 @@ export default function App() {
       <Header
         isDarkMode={isDarkMode}
         setIsDarkMode={setIsDarkMode}
-        className="flex-none"
+        className="flex-none z-10"
       />
 
       <div
@@ -102,7 +102,7 @@ export default function App() {
       </div>
 
       <Input
-        className="flex-none"
+        className="flex-none z-10"
         inputValue={inputValue}
         setInputValue={setInputValue}
         setResponse={setResponse}
