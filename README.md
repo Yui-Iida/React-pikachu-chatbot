@@ -1,6 +1,11 @@
-# Getting Started with Create React App
+# Pikachu Chatbot App
+
+With React, ChatGPT AI, Tailwind, react-icons, etc. 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+<img width="924" alt="スクリーンショット 2023-08-31 21 20 05" src="https://github.com/Yui-Iida/React-pikachu-chatbot/assets/92433326/da3d1c47-e432-4267-9899-f23789ca6ee8">
+
 
 ## Available Scripts
 
