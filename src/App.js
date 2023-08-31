@@ -77,11 +77,7 @@ export default function App() {
 
   return (
     <div className="font-poppins flex flex-col h-screen  bg-gray-100 dark:bg-neutral-700">
-      <Header
-        isDarkMode={isDarkMode}
-        setIsDarkMode={setIsDarkMode}
-        className="flex-none z-10"
-      />
+      <Header isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
 
       <div
         ref={chatAreaRef}
@@ -102,7 +98,6 @@ export default function App() {
       </div>
 
       <Input
-        className="flex-none z-10"
         inputValue={inputValue}
         setInputValue={setInputValue}
         setResponse={setResponse}
