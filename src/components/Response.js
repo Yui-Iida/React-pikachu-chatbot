@@ -27,13 +27,13 @@ export default function Response({ response, isLoading }) {
     }
   }, [latestResponseUpdated]);
 
-  const mouseEnter = () => {
-    setShowHoverMenu(true);
-  };
+  // const mouseEnter = () => {
+  //   setShowHoverMenu(true);
+  // };
 
-  const mouseLeave = () => {
-    setShowHoverMenu(false);
-  };
+  // const mouseLeave = () => {
+  //   setShowHoverMenu(false);
+  // };
 
   const handleCopy = () => {
     setIsCopied(true);
@@ -61,10 +61,11 @@ export default function Response({ response, isLoading }) {
             <div
               className="bg-white font-light
               rounded-xl ml-6 p-4 max-w-xs dark:bg-neutral-950 dark:text-white md:max-w-xl"
-              onMouseEnter={mouseEnter}
-              onMouseLeave={mouseLeave}
+              onMouseEnter={() => setShowHoverMenu(true)}
+              onMouseLeave={() => setShowHoverMenu(false)}
+              onMouseMove={() => setShowHoverMenu(true)}
             >
-              <p>{response}</p>
+              <p>{latestResponse}</p>
               {showHoverMenu && (
                 <div className="absolute -right-5 -bottom-2 bg-primary py-1 px-3 text-white font-extralight rounded-lg dark:bg-secondary">
                   <CopyToClipboard text={response} onCopy={handleCopy}>

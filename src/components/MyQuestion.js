@@ -15,7 +15,6 @@ export default function MyQuestion({ inputValue }) {
 
   return (
     <div className="my-question m-6">
-      {/* <div className="flex items-center"> */}
       <div
         ref={questionRef}
         className="flex items-center relative right-0 justify-end"
@@ -32,7 +31,6 @@ export default function MyQuestion({ inputValue }) {
           }}
         ></div>
       </div>
-      {/* </div> */}
     </div>
   );
 }
