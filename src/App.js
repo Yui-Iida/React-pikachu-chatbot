@@ -86,7 +86,7 @@ export default function App() {
       <div
         ref={chatAreaRef}
         style={{ marginBottom: `${textareaHeight + 110}px` }}
-        className="overflow-y-scroll w-full mt-20"
+        className="overflow-y-scroll w-full mt-20 z-0"
       >
         {messageHistory?.map((message, index) =>
           message.role === "user" ? (
