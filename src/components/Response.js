@@ -42,7 +42,7 @@ export default function Response({ response, isLoading }) {
   return (
     <div className="response m-6">
       <div className="flex items-center">
-        <img src="/img/img-pikachu.PNG" alt="pikachu" className="h-10" />
+        <img src="/img/img-pikachu.PNG" alt="pikachu icon" className="h-10" />
 
         {isLoading && !latestResponseUpdated ? (
           <ThreeDots

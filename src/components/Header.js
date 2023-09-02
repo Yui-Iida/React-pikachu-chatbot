@@ -20,7 +20,7 @@ export default function Header({ isDarkMode, setIsDarkMode }) {
     <header className="header h-20 w-screen bg-white flex items-center top-0 left-0 right-0 fixed flex-none z-10 dark:bg-black">
       <div className="flex pl-6 pr-6 items-center justify-between w-full">
         <div className="flex items-center gap-2">
-          <img src="/img/img-pikachu.PNG" alt="pikachu" className="h-10" />
+          <img src="/img/img-pikachu.PNG" alt="pikachu icon" className="h-10" />
           <p className="text-lg dark:text-white">Pikachu</p>
         </div>
         <button type="button">
